@@ -7,7 +7,7 @@ import authRouter from "./routes/auth_Route.js";
 import messageRouter from "./routes/message_Route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+const __dirname = path.resolve();
 import cors from "cors";
 const port = process.env.PORT;
 
