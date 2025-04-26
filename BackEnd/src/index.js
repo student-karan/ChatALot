@@ -25,7 +25,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
 if (process.env.NODE_ENV === "Production") {
-  app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
+  app.use(express.static(path.join(__dirname, '../FrontEnd/dist/assets')));
 
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../FrontEnd", "dist" , "index.html"))
