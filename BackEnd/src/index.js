@@ -21,8 +21,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.use("/api/auth", authRouter);
-app.use("/api/message", messageRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api/message", messageRouter);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
