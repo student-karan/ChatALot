@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
-if(process.env.NODE_ENV === "development"){
-dotenv.config();
+if (process.env.NODE_ENV === "development") {
+  dotenv.config();
 }
 import express from "express";
-import { app, server} from "./lib/socket.js";
+import { app, server } from "./lib/socket.js";
 import { connectdb } from "./lib/db.js";
 import authRouter from "./routes/auth_Route.js";
 import messageRouter from "./routes/message_Route.js";
@@ -24,13 +24,13 @@ app.use(cors({
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
-if (process.env.NODE_ENV !== "development") {
-  app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
-  });
-}
+app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../FrontEnd/dist/index.html"));
+});
+
 
 app.use((err, req, res, next) => {
   const { status = 500, message = "Internal server error" } = err;
