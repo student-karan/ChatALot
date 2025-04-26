@@ -24,6 +24,12 @@ app.use(cors({
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
+
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Internal server error" } = err;
+  res.status(status).send(message);
+})
+
 if (process.env.NODE_ENV === "Production") {
   app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
 
@@ -31,11 +37,6 @@ if (process.env.NODE_ENV === "Production") {
     res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
   });
 }
-
-app.use((err, req, res, next) => {
-  const { status = 500, message = "Internal server error" } = err;
-  res.status(status).send(message);
-})
 
 server.listen(port, () => {
   console.log("app listening on port:" + port);
