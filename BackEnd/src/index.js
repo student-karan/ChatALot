@@ -24,13 +24,9 @@ app.use(cors({
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
-if (process.env.NODE_ENV === "Production") {
-  app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../FrontEnd/dist/index.html"))
-  })
-}
+app.get('/', (req, res) => {
+  res.send('Hello from your Render backend!');
+});
 app.use((err, req, res, next) => {
   const { status = 500, message = "Internal server error" } = err;
   res.status(status).send(message);
