@@ -28,13 +28,17 @@ app.use((err, req, res, next) => {
   res.status(status).send(message);
 })
 
-if (process.env.NODE_ENV === "Production") {
-  app.use(express.static(path.join(__dirname, "FrontEnd/dist")));
+// if (process.env.NODE_ENV === "Production") {
+//   app.use(express.static(path.join(__dirname, "FrontEnd/dist")));
 
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "FrontEnd", "dist", "index.html"));
-  });
-}
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "FrontEnd", "dist", "index.html"));
+//   });
+// }
+
+app.get("/",(req,res)=>{
+  res.send("Hello THere");
+})
 
 server.listen(port, () => {
   console.log("app listening on port:" + port);
