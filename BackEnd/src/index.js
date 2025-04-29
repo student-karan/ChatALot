@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
   res.status(status).send(message);
 })
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "Production") {
   app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
 
   app.get("*", (req, res) => {
