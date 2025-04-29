@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
 // }
 
 app.get("/",(req,res)=>{
-  res.send("Hello THere");
+  res.sendFile(path.join(__dirname,"../FrontEnd/dist/index.html"));
 })
 
 server.listen(port, () => {
