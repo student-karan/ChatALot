@@ -29,9 +29,6 @@ if (process.env.NODE_ENV !== "development") {
   app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
   });
-  app.all("*", (req, res) => {
-    res.redirect("/");
-  })
 }
 
 app.use((err, req, res, next) => {
