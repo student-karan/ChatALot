@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
-if (process.env.NODE_ENV === "development") {
   dotenv.config();
-}
 import express from "express";
 import { app, server } from "./lib/socket.js";
 import { connectdb } from "./lib/db.js";
