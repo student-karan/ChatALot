@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-  dotenv.config();
+dotenv.config();
 import express from "express";
 import { app, server } from "./lib/socket.js";
 import { connectdb } from "./lib/db.js";
@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 const __dirname = path.resolve();
 import cors from "cors";
+import ExpressError from "./ExpressError.js";
 const port = process.env.PORT;
 
 app.use(express.urlencoded({ extended: true }));
@@ -22,19 +23,21 @@ app.use(cors({
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
+if (process.env.NODE_ENV !== "development") {
+  app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
+
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
+  });
+  app.all("*", (req, res) => {
+    res.redirect("/");
+  })
+}
 
 app.use((err, req, res, next) => {
   const { status = 500, message = "Internal server error" } = err;
   res.status(status).send(message);
 })
-
-if (process.env.NODE_ENV !== "development") {
-  app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
-  });
-}
 
 server.listen(port, () => {
   console.log("app listening on port:" + port);
