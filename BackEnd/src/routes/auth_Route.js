@@ -19,6 +19,6 @@ router.get("/logOut",asyncWrap(logout));
 //update-Profile
 router.put("/updateProfile",isLoggedin,upload.single('profilePic'),asyncWrap(updateProfile));
 
-router.get("/checkAuth",isLoggedin,asyncWrap(checkAuth))
+router.get("/checkAuth",isLoggedin,asyncWrap(checkAuth));
 
 export default router;

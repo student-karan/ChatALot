@@ -13,7 +13,7 @@ const UserSchema = joi.object({
 export const ValidateUser = (req, res, next) => {
     let result = UserSchema.validate(req.body);
     if (result.error) {
-        next(new ExpressError(404, result.error))
+        next(new ExpressError(404, result.error));
     }
     else {
         next();
