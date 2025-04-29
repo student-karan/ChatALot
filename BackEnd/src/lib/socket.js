@@ -1,9 +1,9 @@
 import { Server } from "socket.io";
-import { createServer } from "http";
+import http from "http";
 import express from "express";
 
 const app = express();
-const server = createServer(app);
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
