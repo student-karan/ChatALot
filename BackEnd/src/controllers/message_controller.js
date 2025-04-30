@@ -34,6 +34,5 @@ export const sendMessages = async (req, res) => {
     if (recieverSocket_id) {
         io.to(recieverSocket_id).emit("newMessage", message);
     }
-
     res.status(201).send(message);
 }
