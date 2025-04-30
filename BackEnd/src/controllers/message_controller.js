@@ -22,7 +22,7 @@ export const get_chats = async (req, res) => {
 }
 
 export const sendMessages = async (req, res) => {
-    let { id: recieverId } = req.params;
+    let { id:recieverId } = req.params;
     let senderId = req.user._id;
     let { text } = req.body;
     let imageUrl = req.file?.path; //will be undefined if no file in request body

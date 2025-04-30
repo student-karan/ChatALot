@@ -9,7 +9,6 @@ import cookieParser from "cookie-parser";
 import path from "path";
 const __dirname = path.resolve();
 import cors from "cors";
-import ExpressError from "./ExpressError.js";
 const port = process.env.PORT;
 
 app.use(express.urlencoded({ extended: true }));
@@ -20,16 +19,22 @@ app.use(cors({
   credentials: true
 }));
 
-app.use("/api/auth", authRouter);
-app.use("/api/message", messageRouter);
-
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../FrontEnd/dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
+    if (req.path.startsWith("/api/auth")) {
+      res.redirect("/api/auth");
+    } else if (req.path.startsWith("/api/message")) {
+      res.redirect("/api/message");
+    } else {
+      res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
+    }
   });
 }
+app.use("/api/auth", authRouter);
+app.use("/api/message", messageRouter);
+
 
 app.use((err, req, res, next) => {
   const { status = 500, message = "Internal server error" } = err;
