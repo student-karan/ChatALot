@@ -61,7 +61,7 @@ const SignupPage = () => {
               <label htmlFor="password" className='font-medium'>Password</label>
               <div className='relative'>
                 <input type={showPassword ? "text" : "password"} id='password' name='password'
-                  value={formik.values.password} placeholder={showPassword ? "type your password" : "*********"}
+                  value={formik.values.password} placeholder={showPassword ? "type your password" : "•••••••••••"}
                   onInput={formik.handleChange} className="input input-bordered focus:border-1 focus:border-gray-100 pl-10 w-full mb-1"
                   style={{ outline: 'none' }} />
                 <Lock className='absolute top-3 left-2' style={{ color: 'gray', fontSize: 30 }} />
