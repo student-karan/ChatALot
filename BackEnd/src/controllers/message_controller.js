@@ -10,7 +10,7 @@ export const get_Users_on_sidebar = async (req, res) => {
 }
 
 export const get_chats = async (req, res) => {
-    let { id: UsertoChatId } = req.params;
+    let { id:UsertoChatId } = req.params;
     const myId = req.user._id;
     let messages = await Message.find({
         $or: [
