@@ -7,7 +7,7 @@ const PlaceHolder = () => {
                 <div className='size-12 bg-primary/10 grid place-items-center animate-bounce rounded-lg transition-colors'>
                     <MessageSquare className='size-8 font-semibold text-primary' />
                 </div>
-                <h1 className='text-xl font-semibold'>Welcome to Chatty!</h1>
+                <h1 className='text-xl font-semibold'>Welcome to ChatALot!</h1>
                 <p className='text-sm font-medium'>Select a conversation from the sidebar to start chatting</p>
             </div>
         </div>
