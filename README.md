@@ -1,5 +1,5 @@
 
-# 💬 Real-Time Chat Application
+#  💬 Real-Time Chat Application
 
 A fully functional real-time chat application built with modern technologies on both the frontend and backend. Users can chat in real time, see who’s online, manage media uploads, and enjoy a beautiful customizable UI.
 
