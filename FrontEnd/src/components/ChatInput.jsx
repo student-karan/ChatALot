@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ChatStore } from '../store/Chatstore.js';
 import { Image, Send } from 'lucide-react';
 import { X } from 'lucide-react';

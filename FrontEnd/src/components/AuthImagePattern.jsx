@@ -1,5 +1,4 @@
-import React from 'react'
-
+// eslint-disable-next-line react/prop-types
 const AuthImagePattern = ({ title, subtitle }) => {
   const array = new Array(9).fill(0);
 

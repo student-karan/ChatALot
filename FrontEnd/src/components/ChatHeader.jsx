@@ -1,4 +1,3 @@
-import React from 'react'
 import { X } from 'lucide-react';
 import { ChatStore } from '../store/Chatstore.js';
 import { AuthStore } from '../store/AuthStore.js';

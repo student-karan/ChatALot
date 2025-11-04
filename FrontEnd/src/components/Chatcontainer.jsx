@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ChatStore } from '../store/Chatstore'
 import MessageSkeleton from './skeletons/MessageSkeleton';
 import ChatHeader from './ChatHeader';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChatStore } from '../store/Chatstore.js';
 import { AuthStore } from '../store/AuthStore.js';
 import { Users } from 'lucide-react';
