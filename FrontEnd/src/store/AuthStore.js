@@ -22,7 +22,7 @@ export const AuthStore = create((set, get) => ({
       set({ authUser: res.data });
       get().connectSocket();
     } catch (err) {
-      console.log(err.response?.data?.message || "Not authenticated");
+      console.log(err.response?.data || "Not authenticated");
     } finally {
       set({ isCheckingAuth: false });
     }
@@ -37,7 +37,7 @@ export const AuthStore = create((set, get) => ({
       toast.success("Account created successfully");
       get().connectSocket();
     } catch (err) {
-      toast.error(err.response?.data?.message || "Signup failed");
+      toast.error(err.response?.data|| "Signup failed");
     } finally {
       set({ isSigningUp: false });
     }
@@ -51,7 +51,7 @@ export const AuthStore = create((set, get) => ({
       toast.success(`Welcome Back ${res.data.fullName}`);
       get().connectSocket();
     } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed");
+      toast.error(err.response?.data || "Login failed");
     } finally {
       set({ isLoggingIn: false });
     }
@@ -64,7 +64,7 @@ export const AuthStore = create((set, get) => ({
       toast.success(res.data);
       get().disconnectSocket();
     } catch (err) {
-      toast.error(err.response?.data?.message || "Logout failed");
+      toast.error(err.response?.data || "Logout failed");
     }
   },
 
@@ -77,7 +77,7 @@ export const AuthStore = create((set, get) => ({
       set({ authUser: res.data });
       toast.success("your profile picture is Updated");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Update failed");
+      toast.error(err.response?.data || "Update failed");
     } finally {
       set({ isUpdatingProfile: false });
     }
