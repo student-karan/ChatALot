@@ -8,12 +8,13 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
 const port = process.env.PORT;
+const corsoptions = ["https://chatalot-shic.onrender.com/", "http://localhost:5173"];
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: corsoptions,
   credentials: true
 }));
 
