@@ -15,7 +15,7 @@ const uploadOnCloudinary = async (ProductFilePath) => {
         }
         // upload the file on cloudinary
         const response = await cloudinary.uploader.upload(ProductFilePath,
-            { resource_type: "auto", folder: "GrocerGo" });
+            { resource_type: "auto", folder: "ChataLot_APP" });
 
         // Delete temp file after successful upload
         fs.unlinkSync(ProductFilePath);
