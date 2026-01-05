@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
 const port = process.env.PORT;
-const corsoptions = ["https://chat-a-lot.vercel.app/", "http://localhost:5173"];
+const corsoptions = ["https://chat-a-lot.vercel.app", "http://localhost:5173"];
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
