@@ -2,6 +2,7 @@ import { generateToken } from "../lib/utils.js";
 import User from "../models/user_model.js";
 import bcrypt from "bcrypt";
 import ExpressError from "../ExpressError.js";
+import uploadOnCloudinary from "../lib/cloudinary.js";
 
 export const signupPost = async (req, res, next) => {
     const { email, fullName, password } = req.body;
@@ -50,12 +51,13 @@ export const logout = (req, res) => {
 }
 
 export const updateProfile = async (req, res) => {
-    const profilePic  = req.file.path;
+    const profilePic  = req.file?.path;
     const userId = req.user._id;
     if (!profilePic) {
         throw new ExpressError(400, "Profile Pic is Required");
     }
-    const updatedUser = await User.findByIdAndUpdate(userId, { $set: { profilePic: profilePic } }, 
+    const imageURL = await uploadOnCloudinary(profilePic);
+    const updatedUser = await User.findByIdAndUpdate(userId, { $set: { profilePic: imageURL } }, 
     { new: true, runValidators: true })
     res.status(200).send(updatedUser);
 }

@@ -3,9 +3,7 @@ const router = express.Router();
 import {logout, signupPost, loginPost,updateProfile, checkAuth} from "../controllers/auth_Controller.js";
 import { ValidateUser,isLoggedin } from "../middlewares/auth_middleware.js";
 import { asyncWrap } from "../lib/utils.js";
-import storage from "../lib/cloudinary.js";
-import multer from 'multer';
-const upload = multer({storage});
+import {upload} from "./../middlewares/multer_middleware.js";
 
 //Signup
 router.post("/signup",ValidateUser,asyncWrap(signupPost));

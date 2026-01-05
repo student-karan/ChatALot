@@ -1,6 +1,7 @@
 import User from "../models/user_model.js";
 import Message from "../models/message_model.js"
 import { recieverSocketId, io } from "../lib/socket.js";
+import uploadOnCloudinary from "../lib/cloudinary.js";
 
 export const get_Users_on_sidebar = async (req, res) => {
     const myId = req.user._id;
@@ -27,7 +28,8 @@ export const sendMessages = async (req, res) => {
     let { text } = req.body;
     let imageUrl = req.file?.path; //will be undefined if no file in request body
     if (!text && !imageUrl) return;
-    let message = new Message({ senderId, recieverId, text, image: imageUrl });
+    const imageURL = await uploadOnCloudinary(imageUrl);
+    let message = new Message({ senderId, recieverId, text, image: imageURL });
     await message.save();
     //todo : realtime functionality => socket.io
     const recieverSocket_id = recieverSocketId(recieverId);
