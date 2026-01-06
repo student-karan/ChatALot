@@ -6,7 +6,12 @@ import authRouter from "./routes/auth_Route.js";
 import messageRouter from "./routes/message_Route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const port = process.env.PORT;
 const corsoptions = ["https://chat-a-lot.vercel.app", "http://localhost:5173"];
 

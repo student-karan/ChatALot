@@ -22,7 +22,7 @@ const uploadOnCloudinary = async (ProductFilePath) => {
         return response.secure_url;
     } catch (err) {
         fs.unlinkSync(ProductFilePath);
-        throw new Error("AN error occured while uploading the file on cloudinary");
+        throw new Error(err.message);
     }
 }
 
