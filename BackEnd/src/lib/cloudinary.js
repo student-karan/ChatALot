@@ -11,7 +11,7 @@ cloudinary.config({
 const uploadOnCloudinary = async (ProductFilePath) => {
     try {
         if (!ProductFilePath) {
-            throw new Error("You must provide atleast one image of the product.");
+            throw new Error("You must provide an image file.");
         }
         // upload the file on cloudinary
         const response = await cloudinary.uploader.upload(ProductFilePath,

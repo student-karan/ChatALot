@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create uploads directory in the same backend folder
-const uploadDir = path.join(__dirname, "../uploads"); // Changed from "../public" to "../uploads"
+const uploadDir = path.join(__dirname, "../uploads"); 
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
