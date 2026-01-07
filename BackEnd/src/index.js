@@ -15,6 +15,7 @@ const __dirname = path.dirname(__filename);
 const port = process.env.PORT;
 const corsoptions = ["https://chat-a-lot.vercel.app", "http://localhost:5173"];
 
+app.set("trust proxy", 1); // Trust first proxy
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());

@@ -15,6 +15,7 @@ import SignupPage from "./pages/SignupPage.jsx"
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, online_users } = AuthStore();
   const {theme} = selectTheme();
+  
   useEffect(() => {
     checkAuth();
   }, []);
