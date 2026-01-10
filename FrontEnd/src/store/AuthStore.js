@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 const BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:8080"
-    : "https://chatalot-tjhi.onrender.com";
+    : "https://chatalot-ouh0.onrender.com";
 
 export const AuthStore = create((set, get) => ({
   authUser: null,
@@ -17,6 +17,7 @@ export const AuthStore = create((set, get) => ({
   online_users: [],
   socket: null,
   checkAuth: async () => {
+    set({isCheckingAuth : true});
     try {
       let res = await axiosInstance.get("/auth/checkAuth");
       set({ authUser: res.data });
